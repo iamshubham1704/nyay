@@ -11,18 +11,6 @@ import AnimatedStats from '@/components/AnimatedStats';
 import LawyerCard from '@/components/LawyerCard';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: 'easeOut'
-    },
-  })
-};
 
 const lawyers = [
   { name: 'Adv. Aakash Mehta', specialty: 'Criminal Defense, Delhi HC', status: 'Available', image: '/avatars/aakash-mehta.png', link: '/lawyer/aakash-mehta' },
@@ -98,7 +86,7 @@ export default function HomePage() {
           animate="visible"
         >
           <Link href="/client-register"><Button>Get Started</Button></Link>
-          <Link href="/upload"><Button variant="outline">Upload Case File</Button></Link>
+          <Link href="/upload"><Button>Upload Case File</Button></Link>
         </motion.div>
       </section>
 

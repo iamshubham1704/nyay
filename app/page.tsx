@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import ChatbotWidget from '@/components/ChatbotWidget';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Gavel, BookOpenText, Landmark } from 'lucide-react';
+import { Briefcase, FileText, Phone, Gavel, BookOpenText, Landmark } from 'lucide-react';
 import Lottie from 'lottie-react';
 import justiceAnimation from '@/public/justice.json';
 import AnimatedStats from '@/components/AnimatedStats';
 import LawyerCard from '@/components/LawyerCard';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
+
 
 const lawyers = [
   { name: 'Adv. Aakash Mehta', specialty: 'Criminal Defense, Delhi HC', status: 'Available', image: '/avatars/aakash-mehta.png', link: '/lawyer/aakash-mehta' },
@@ -63,7 +64,7 @@ export default function HomePage() {
           Welcome to <span className="text-indigo-700">Nyay Portal</span>
         </motion.h1>
         <motion.p
-          className="text-base sm:text-lg mt-1 text-gray-700 italic"
+          className="text-sm sm:text-base mt-1 text-gray-900 italic tracking-wide"
           custom={2}
           initial="hidden"
           animate="visible"
@@ -76,39 +77,35 @@ export default function HomePage() {
           initial="hidden"
           animate="visible"
         >
-          India’s first trusted legal-tech platform to find verified lawyers, manage legal documents, and receive AI-driven case insights.
+          India’s first trusted legal platform to find verified lawyers, manage case files, and get AI-powered legal insights.
         </motion.p>
         <motion.div
-          className="mt-8 flex flex-col sm:flex-row gap-4"
+          className="mt-8 flex gap-4"
           custom={4}
           initial="hidden"
           animate="visible"
         >
-          <Link href="/client-register"><Button size="lg">Get Started</Button></Link>
-          <Link href="/upload"><Button size="lg">Upload Case File</Button></Link>
+          <Link href="/client-register"><Button>Get Started</Button></Link>
+          <Link href="/upload"><Button>Upload Case File</Button></Link>
         </motion.div>
       </section>
 
       {/* Features Section */}
       <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-3">
-          {[
-            { icon: <Gavel className="text-indigo-600" />, title: 'Verified Lawyers', desc: 'Strict KYC and background verification for all legal experts.' },
-            { icon: <BookOpenText className="text-indigo-600" />, title: 'Smart Case Management', desc: 'Organize, upload & track your legal cases on one platform.' },
-            { icon: <Landmark className="text-indigo-600" />, title: 'Instant Legal Consults', desc: 'Book appointments or get online legal help 24x7.' },
+        <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-3">
+          {[{ icon: <Gavel className="text-indigo-600" />, title: 'Verified Lawyers', desc: 'All our lawyers go through a strict background and identity verification process.' },
+            { icon: <BookOpenText className="text-indigo-600" />, title: 'Case Management', desc: 'Upload, manage, and keep track of your legal documents directly through your portal.' },
+            { icon: <Landmark className="text-indigo-600" />, title: 'Easy Consultations', desc: 'Book and schedule legal consultations with just a few clicks, with top lawyers across India.' },
           ].map((feature, i) => (
             <motion.div
               key={i}
-              className="rounded-xl shadow p-6 bg-gray-50 border hover:shadow-lg transition-all"
+              className="rounded-xl shadow-md p-6 bg-gray-50 border border-gray-200 hover:shadow-lg transition-all"
               custom={i + 1}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="flex items-center gap-3 mb-4">
-                {feature.icon}
-                <h3 className="text-xl font-semibold">{feature.title}</h3>
-              </div>
+              <div className="flex items-center gap-3 mb-4">{feature.icon}<h3 className="text-xl font-semibold text-gray-800">{feature.title}</h3></div>
               <p className="text-gray-600">{feature.desc}</p>
             </motion.div>
           ))}
@@ -117,27 +114,13 @@ export default function HomePage() {
 
       {/* How It Works */}
       <section className="bg-white py-20 px-6">
-        <motion.h2
-          className="text-3xl font-bold text-center text-gray-800 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          How Nyay Portal Works
-        </motion.h2>
+        <motion.h2 className="text-3xl font-bold text-center text-gray-800 mb-12" initial="hidden" whileInView="visible" viewport={{ once: true }}>How Nyay Portal Works</motion.h2>
         <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
-          {[
-            { step: '1', title: 'Register', desc: 'Create your profile to access features.' },
-            { step: '2', title: 'Upload Case', desc: 'Describe the issue & attach documents.' },
-            { step: '3', title: 'Connect to Lawyer', desc: 'Get expert legal advice or full representation.' },
+          {[{ step: '1', title: 'Register', desc: 'Sign up and provide basic details to get started.' },
+            { step: '2', title: 'Upload Case', desc: 'Submit your legal issue and case documents securely.' },
+            { step: '3', title: 'Connect with Lawyer', desc: 'Get matched with a verified legal expert quickly.' },
           ].map((item, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} >
               <div className="text-4xl text-indigo-600 font-bold mb-2">{item.step}</div>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600">{item.desc}</p>
@@ -151,11 +134,11 @@ export default function HomePage() {
         <AnimatedStats />
       </section>
 
-      {/* Lawyer Showcase */}
+      {/* Lawyer Slider */}
       <section className="relative bg-gradient-to-br from-white to-gray-50 py-20 px-6">
-        <motion.h2 className="text-3xl font-bold text-center mb-10 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          Meet Our Verified Lawyers
-        </motion.h2>
+        <div className="absolute top-0 left-0 w-40 h-40 bg-indigo-100 rounded-full opacity-30 blur-3xl -z-10" />
+        <div className="absolute bottom-10 right-0 w-60 h-60 bg-indigo-200 rounded-full opacity-20 blur-2xl -z-10" />
+        <motion.h2 className="text-3xl font-bold text-center mb-10 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>Meet Our Verified Lawyers</motion.h2>
         <div className="max-w-6xl mx-auto flex overflow-x-auto gap-6 no-scrollbar px-2 pb-2">
           {lawyers.map((lawyer, index) => (
             <Link key={index} href={lawyer.link} className="min-w-[260px]">
@@ -165,11 +148,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Blog Section */}
+    
+      {/* Nyay Blog Section */}
       <section className="bg-white py-20 px-6">
-        <motion.h2 className="text-3xl font-bold text-center mb-12 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          Legal Tips & Nyay Blog
-        </motion.h2>
+        <motion.h2 className="text-3xl font-bold text-center mb-12 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>Legal Tips & Nyay Blog</motion.h2>
         <div className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post, index) => (
             <motion.div
@@ -188,11 +170,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
+       {/* Success Stories */}
       <section className="bg-gray-100 py-16 px-6">
-        <motion.h2 className="text-3xl font-bold text-center mb-10 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          Success Stories
-        </motion.h2>
+        <motion.h2 className="text-3xl font-bold text-center mb-10 text-gray-800" initial="hidden" whileInView="visible" viewport={{ once: true }}>Success Stories</motion.h2>
         <TestimonialCarousel />
       </section>
 

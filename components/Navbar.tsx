@@ -33,7 +33,7 @@ export default function Navbar() {
                   {({ active }) => (
                     <Link
                       href="/login"
-                      className={px-4 py-2 ${active ? 'bg-gray-100' : ''}}
+                      className={`px-4 py-2 ${active ? 'bg-gray-100' : ''}`}
                     >
                       Login
                     </Link>
@@ -43,7 +43,7 @@ export default function Navbar() {
                   {({ active }) => (
                     <Link
                       href="/register"
-                      className={px-4 py-2 ${active ? 'bg-gray-100' : ''}}
+                      className={`px-4 py-2 ${active ? 'bg-gray-100' : ''}`}
                     >
                       Register
                     </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
                   {({ active }) => (
                     <Link
                       href="/client-login"
-                      className={px-4 py-2 ${active ? 'bg-gray-100' : ''}}
+                      className={`px-4 py-2 ${active ? 'bg-gray-100' : ''}`}
                     >
                       Login
                     </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                   {({ active }) => (
                     <Link
                       href="/client-register"
-                      className={px-4 py-2 ${active ? 'bg-gray-100' : ''}}
+                      className={`px-4 py-2 ${active ? 'bg-gray-100' : ''}`}
                     >
                       Register
                     </Link>
@@ -101,4 +101,4 @@ export default function Navbar() {
       </nav>
     </header>
   );
-}  
+}
